@@ -1,0 +1,12 @@
+[build]
+  command = "pip install -r requirements.txt"
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/main"
+  status = 200
+
+[functions]
+  directory = "app"
+  node_bridge = true
