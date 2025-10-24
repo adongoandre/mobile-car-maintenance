@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: car-maintenance-backend
+    env: python
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: car-maintenance-db
+          property: connectionString
+
+databases:
+  - name: car-maintenance-db
+    plan: free
+    region: oregon
+    databaseName: car_maintenance
+    user: car_maintenance_user

@@ -9,6 +9,10 @@ load_dotenv()  # Load environment variables from .env file
 # Get database URL from environment variable
 DATABASE_URL = os.getenv("DATABASE_URL")
 
+# For local development, you can keep using Neon
+if not DATABASE_URL:
+    DATABASE_URL = "postgresql://neondb_owner:npg_ju3mPfaJ4TpB@ep-mute-voice-ahroby26-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
