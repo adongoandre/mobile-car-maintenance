@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.header {
+    background: #2c3e50;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    opacity: 0.8;
+    font-size: 1.1em;
+}
+
+.test-section {
+    padding: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.test-section:last-child {
+    border-bottom: none;
+}
+
+.test-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: #2980b9;
+}
+
+.button.success {
+    background: #27ae60;
+}
+
+.button.success:hover {
+    background: #219a52;
+}
+
+.input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.result {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 15px;
+    min-height: 50px;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.loading {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.error {
+    color: #e74c3c;
+    background: #fdf2f2;
+    border-color: #f5b7b1;
+}
+
+.success {
+    color: #27ae60;
+    background: #f2fdf2;
+    border-color: #a9dfbf;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-online {
+    background: #27ae60;
+}
+
+.status-offline {
+    background: #e74c3c;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
