@@ -2,16 +2,17 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
 
-load_dotenv() 
+# For Netlify, environment variables are automatically available
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
 
-# For Netlify, we need to handle the connection string properly
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-# Ensure the connection string is properly formatted
+# Fix common connection string issue
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+# For local development fallback
+if not DATABASE_URL:
+    DATABASE_URL = "sqlite:///./test.db"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
