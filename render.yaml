@@ -1,20 +1,12 @@
 services:
   - type: web
-    name: car-maintenance-backend
+    name: car-maintenance-api
     env: python
     plan: free
-    region: oregon
-    branch: main
-    pythonVersion: "3.11"
-    buildCommand: |
-      pip install --upgrade pip
-      pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
-        value: postgresql://neondb_owner:npg_ju3mPfaJ4TpB@ep-mute-voice-ahroby26-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
-
-# Comment out the database section for now - we'll use Neon first
-# databases:
-#   - name: car-maintenance-db
-#     plan: free
+        fromDatabase:
+          name: car-maintenance-db
+          property: connectionString

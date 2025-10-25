@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Car Maintenance API Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Car Maintenance API Tester</h1>
+        <p>Testing backend deployed on Netlify Functions</p>
+        
+        <div class="card">
+            <h3>Health Check</h3>
+            <button onclick="testHealth()">Test API Health</button>
+            <pre id="health-result">Click to test...</pre>
+        </div>
+
+        <div class="card">
+            <h3>Create Test User</h3>
+            <input type="email" id="userEmail" placeholder="Email" value="test@example.com">
+            <input type="text" id="userName" placeholder="Full Name" value="Test User">
+            <button onclick="createUser()">Create User</button>
+            <pre id="create-result">Click to create...</pre>
+        </div>
+
+        <div class="card">
+            <h3>Get User</h3>
+            <input type="number" id="userId" placeholder="Enter User ID" value="1">
+            <button onclick="getUser()">Get User</button>
+            <pre id="user-result">Click to test...</pre>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

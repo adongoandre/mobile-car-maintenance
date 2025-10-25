@@ -4,20 +4,19 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 
-load_dotenv()  # Load environment variables from .env file
+load_dotenv() 
 
-# Get database URL from environment variable
+# For Netlify, we need to handle the connection string properly
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# For local development, you can keep using Neon
-if not DATABASE_URL:
-    DATABASE_URL = "postgresql://neondb_owner:npg_ju3mPfaJ4TpB@ep-mute-voice-ahroby26-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+# Ensure the connection string is properly formatted
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# Dependency to get database session
 def get_db():
     db = SessionLocal()
     try:

@@ -1,0 +1,24 @@
+[build]
+  command = "echo 'No build needed for Python functions'"
+  publish = "frontend"  # Where your static frontend files are
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (you'll also set these in Netlify dashboard)
+[build.environment]
+  DATABASE_URL = "postgresql://neondb_owner:npg_ju3mPfaJ4TpB@ep-mute-voice-ahroby26-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+
+# Function configuration
+[functions]
+  directory = "netlify/functions"
